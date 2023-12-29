@@ -1,14 +1,8 @@
-* {
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Pretendard', sans-serif;
-}
-
 footer {
   width: 100%;
   margin-top: 120px;
   text-align: center;
-  font-family: 'Abel', sans-serif;
+  font-family: 'Pretendard', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
