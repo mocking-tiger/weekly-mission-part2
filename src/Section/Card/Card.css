@@ -1,0 +1,96 @@
+.card {
+  width: 340px;
+  height: 334px;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+  border-radius: 0 0 15px 15px;
+}
+
+.image-box {
+  width: 340px;
+  height: 200px;
+  background-color: #dddfff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px 15px 0 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-box img:nth-of-type(1) {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.image-box img:nth-of-type(2) {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.text-box {
+  padding: 15px 20px;
+  position: relative;
+}
+
+.text-box h5 {
+  color: #666;
+  font-family: Pretendard;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 10px;
+}
+
+.text-box img {
+  position: absolute;
+  right: 20px;
+  bottom: 102px;
+}
+
+.text-box p {
+  height: 49px;
+  overflow: hidden;
+  color: #000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  margin-bottom: 10px;
+}
+
+.text-box h6 {
+  overflow: hidden;
+  color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.image-box img.growImg {
+  width: 130%;
+  height: 130%;
+}
+
+@media (max-width: 1123px) {
+}
+
+@media (max-width: 779px) {
+  .card {
+    width: 309px; /*패딩값 빼면 309*/
+    height: 327px;
+  }
+
+  .image-box {
+    width: 309px;
+  }
+}

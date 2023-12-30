@@ -1,26 +1,26 @@
 footer {
   width: 100%;
-  margin-top: 120px;
+  margin-top: 60px;
   text-align: center;
-  font-family: 'Pretendard', sans-serif;
+  font-family: "Pretendard", sans-serif;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 
-footer>div {
+footer > div {
   height: 160px;
   padding: 32px 104px 64px;
   background: var(--the-julge-black, #111322);
 }
 
-footer>div>div {
+footer > div > div {
   margin: 0 auto;
   max-width: 1695px;
   display: flex;
   justify-content: space-between;
-  color: #CFCFCF;
+  color: #cfcfcf;
 }
 
 .foot-left {
@@ -34,10 +34,46 @@ footer>div>div {
 }
 
 .foot-center a {
-  color: #CFCFCF;
+  color: #cfcfcf;
 }
 
 .foot-right {
   display: flex;
   gap: 12px;
+}
+
+@media (max-width: 1123px) {
+}
+
+@media (max-width: 779px) {
+  footer {
+    margin-top: 40px;
+  }
+
+  footer > div {
+    padding: 32px 32px 64px 32px;
+  }
+
+  footer > div > div {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    grid-template-areas:
+      "1 2"
+      "3 .";
+  }
+
+  .foot-left {
+    grid-row: 2;
+    width: 105px;
+  }
+
+  .foot-center {
+    margin-bottom: 60px;
+    grid-column: 1;
+  }
+
+  .foot-right {
+    grid-column: 2;
+  }
 }
