@@ -7,10 +7,7 @@ import { todayIs, today } from "./TodayIs/TodayIs";
 
 function Section() {
   let [cardInfo, setCardInfo] = useState();
-  const style = {
-    width: "340px",
-    height: "253.746px",
-  };
+  const style = {};
   const logoStyle = {
     opacity: "0.2",
     width: "133px",

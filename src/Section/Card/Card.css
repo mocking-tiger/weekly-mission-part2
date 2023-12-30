@@ -16,9 +16,10 @@
   overflow: hidden;
 }
 
-.image-box img:hover {
-  width: 130%;
-  height: 130%;
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
 }
 
 .text-box {
@@ -59,4 +60,9 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.image-box img.growImg {
+  width: 130%;
+  height: 130%;
 }
