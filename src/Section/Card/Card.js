@@ -1,6 +1,8 @@
 import "./Card.css";
-import logo from "../../assets/logo.svg";
 import { useState } from "react";
+import logo from "../../assets/logo.svg";
+import star from "../../assets/star.svg";
+import kebab from "../../assets/kebab.svg";
 
 const defalutValue = {
   createdAt: "10minutes ago",
@@ -35,9 +37,11 @@ function Card({
           onMouseOut={mouseOut}
           className={isHover ? "growImg" : ""}
         />
+        <img src={star} alt="star" />
       </div>
       <div className="text-box">
         <h5>{createdAt}</h5>
+        <img src={kebab} alt="kebab" />
         <p>{description}</p>
         <h6>{uploadDate}</h6>
       </div>
