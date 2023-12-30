@@ -2,25 +2,25 @@ footer {
   width: 100%;
   margin-top: 120px;
   text-align: center;
-  font-family: 'Pretendard', sans-serif;
+  font-family: "Pretendard", sans-serif;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 
-footer>div {
+footer > div {
   height: 160px;
   padding: 32px 104px 64px;
   background: var(--the-julge-black, #111322);
 }
 
-footer>div>div {
+footer > div > div {
   margin: 0 auto;
   max-width: 1695px;
   display: flex;
   justify-content: space-between;
-  color: #CFCFCF;
+  color: #cfcfcf;
 }
 
 .foot-left {
@@ -34,7 +34,7 @@ footer>div>div {
 }
 
 .foot-center a {
-  color: #CFCFCF;
+  color: #cfcfcf;
 }
 
 .foot-right {

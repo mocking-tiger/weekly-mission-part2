@@ -1,0 +1,20 @@
+.search-box {
+  width: 1060px;
+  margin: 0 auto;
+}
+
+.search-box img {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: -30px;
+  left: 15px;
+}
+
+.search-bar {
+  width: 1060px;
+  padding: 15px 40px;
+  border: 0px solid gray;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
