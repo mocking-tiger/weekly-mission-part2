@@ -25,6 +25,14 @@ section > div:nth-of-type(1) {
 }
 
 @media (max-width: 779px) {
+  section {
+    padding: 20px 0;
+  }
+
+  section > div:nth-of-type(1) {
+    margin-bottom: 32px;
+  }
+
   .card-box {
     grid-template-columns: 1fr;
   }

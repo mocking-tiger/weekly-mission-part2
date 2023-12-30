@@ -41,3 +41,39 @@ footer > div > div {
   display: flex;
   gap: 12px;
 }
+
+@media (max-width: 1123px) {
+}
+
+@media (max-width: 779px) {
+  footer {
+    margin-top: 40px;
+  }
+
+  footer > div {
+    padding: 32px 32px 64px 32px;
+  }
+
+  footer > div > div {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    grid-template-areas:
+      "1 2"
+      "3 .";
+  }
+
+  .foot-left {
+    grid-row: 2;
+    width: 105px;
+  }
+
+  .foot-center {
+    margin-bottom: 60px;
+    grid-column: 1;
+  }
+
+  .foot-right {
+    grid-column: 2;
+  }
+}

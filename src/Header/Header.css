@@ -73,6 +73,10 @@ header > div > a:nth-child(2) {
 }
 
 @media (max-width: 779px) {
+  header {
+    padding: 18px 32px;
+  }
+
   header > div {
     width: 100%;
   }

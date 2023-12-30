@@ -66,3 +66,17 @@
   width: 130%;
   height: 130%;
 }
+
+@media (max-width: 1123px) {
+}
+
+@media (max-width: 779px) {
+  .card {
+    width: 309px; /*패딩값 빼면 309*/
+    height: 327px;
+  }
+
+  .image-box {
+    width: 309px;
+  }
+}
