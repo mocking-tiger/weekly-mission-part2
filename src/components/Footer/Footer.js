@@ -1,14 +1,14 @@
 import "./Footer.css";
-import facebookImg from "../assets/faceBook.svg";
-import twitterImg from "../assets/twtter.svg";
-import youtubeImg from "../assets/youtube.svg";
-import instagramImg from "../assets/instagram.svg";
+import facebookImg from "../../assets/faceBook.svg";
+import twitterImg from "../../assets/twtter.svg";
+import youtubeImg from "../../assets/youtube.svg";
+import instagramImg from "../../assets/instagram.svg";
 
 function Footer() {
   return (
     <footer>
-      <div>
-        <div>
+      <div className="footer-son">
+        <div className="footer-son-son">
           <div className="foot-left">©codeit - 2023</div>
           <div className="foot-center">
             <a href="./privacy/privacy.html">Privacy Policy</a>

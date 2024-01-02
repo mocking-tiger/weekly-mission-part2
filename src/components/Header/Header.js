@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { SAPMLE_USER } from "../../assets/url";
 import "./Header.css";
-import logoImg from "../assets/logo.svg";
+import logoImg from "../../assets/logo.svg";
 
 function Header() {
   let [userInfo, setUserInfo] = useState(); //로그인정보 유무로 각각 로그인버튼/프로필정보 출력
@@ -9,9 +10,7 @@ function Header() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        "https://bootcamp-api.codeit.kr/api/sample/user"
-      );
+      const response = await fetch(SAPMLE_USER);
       const data = await response.json();
       setUserInfo(data);
     };
@@ -26,11 +25,12 @@ function Header() {
 
   return (
     <header>
-      <div>
+      <div className="header-son">
         <a href="/">
           <img src={logoImg} alt="로고" />
         </a>
         <a
+          className="login-button"
           href="./signin/signin.html"
           style={userInfo["id"] !== 1 ? visible : invisible}
         >
