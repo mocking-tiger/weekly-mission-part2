@@ -1,6 +1,6 @@
-let today = new Date();
 function todayIs() {
+  let today = new Date();
   return today.toLocaleDateString();
 }
 
-export { todayIs, today };
+export { todayIs };
