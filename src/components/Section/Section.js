@@ -7,7 +7,7 @@ import { todayIs } from "../../utils/TodayIs/TodayIs";
 import { SAMPLE_FOLDER } from "../../assets/url";
 
 function Section() {
-  let [cardInfo, setCardInfo] = useState();
+  const [cardInfo, setCardInfo] = useState();
   const style = {};
   const logoStyle = {
     opacity: "0.2",

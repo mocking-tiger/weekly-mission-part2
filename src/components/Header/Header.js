@@ -4,7 +4,7 @@ import "./Header.css";
 import logoImg from "../../assets/logo.svg";
 
 function Header() {
-  let [userInfo, setUserInfo] = useState(); //로그인정보 유무로 각각 로그인버튼/프로필정보 출력
+  const [userInfo, setUserInfo] = useState(); //로그인정보 유무로 각각 로그인버튼/프로필정보 출력
   const invisible = { display: "none" };
   const visible = { display: "inherit" };
 
