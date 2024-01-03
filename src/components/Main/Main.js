@@ -3,7 +3,7 @@ import { SAMPLE_FOLDER } from "../../assets/url";
 import "./Main.css";
 
 function Main() {
-  let [userInfo, setUserInfo] = useState();
+  const [userInfo, setUserInfo] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
