@@ -1,5 +1,4 @@
 import "./Section.css";
-import Search from "../Search/Search";
 import Card from "../Card/Card";
 import { useEffect, useState } from "react";
 import timeDiffChecker from "../../utils/TimeDiffChecker/TimeDiffChecker";
@@ -36,9 +35,6 @@ function Section() {
 
   return (
     <section>
-      <div className="div-searchbar">
-        <Search />
-      </div>
       <div className="div-card">
         {cardInfo.map((cardData, index) => (
           <a

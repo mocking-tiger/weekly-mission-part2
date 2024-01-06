@@ -2,8 +2,13 @@ import { useState, useEffect } from "react";
 import { CODEIT_API } from "../../assets/url";
 import "./Header.css";
 import logoImg from "../../assets/logo.svg";
+import styled from "styled-components";
 
-function Header({ url = CODEIT_API }) {
+const STYLED_HEADER = styled.header`
+  position: ${(props) => (props.$notFixed ? "static" : "fixed")};
+`;
+
+function Header({ notFixed }) {
   const [userInfo, setUserInfo] = useState(); //로그인정보 유무로 각각 로그인버튼/프로필정보 출력
   const invisible = { display: "none" };
   const visible = { display: "inherit" };
@@ -16,7 +21,7 @@ function Header({ url = CODEIT_API }) {
     };
 
     fetchData();
-  }, [url]);
+  }, []);
 
   if (!userInfo) {
     //api에서 데이터 미수신시 렌더링 방지
@@ -24,7 +29,7 @@ function Header({ url = CODEIT_API }) {
   }
 
   return (
-    <header>
+    <STYLED_HEADER $notFixed={notFixed}>
       <div className="header-son">
         <a href="/">
           <img src={logoImg} alt="로고" />
@@ -44,7 +49,7 @@ function Header({ url = CODEIT_API }) {
           <h6>{userInfo["data"][0]["email"]}</h6>
         </div>
       </div>
-    </header>
+    </STYLED_HEADER>
   );
 }
 

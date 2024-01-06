@@ -1,105 +1,17 @@
 import "./Folder.css";
 import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
 import AddLink from "../components/AddLink/AddLink";
-import { CODEIT_API } from "../assets/url";
+import Search from "../components/Search/Search";
+import UserSection from "../components/UserSection/UserSection";
+import Footer from "../components/Footer/Footer";
 
 function Folder() {
   return (
     <>
-      <Header url={`${CODEIT_API}/users/1`} />
+      <Header notFixed />
       <AddLink />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-
+      <Search />
+      <UserSection />
       <Footer />
     </>
   );
