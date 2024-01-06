@@ -5,6 +5,61 @@ import timeDiffChecker from "../../utils/TimeDiffChecker/TimeDiffChecker";
 import { todayIs } from "../../utils/TodayIs/TodayIs";
 import { CODEIT_API } from "../../assets/url";
 import logo from "../../assets/logo.svg";
+import pen from "../../assets/pen.svg";
+import share from "../../assets/share.svg";
+import remove from "../../assets/delete.svg";
+
+function CreateButton() {
+  const [buttonInfo, setButtonInfo] = useState();
+  const [selectedButton, setSelectedButton] = useState("전체");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`${CODEIT_API}/users/1/folders`);
+      const data = await response.json();
+      setButtonInfo(data["data"]);
+    };
+    fetchData();
+  }, []);
+
+  if (!buttonInfo) {
+    return null;
+  }
+
+  const handleButtonClick = (name) => {
+    setSelectedButton(name);
+  };
+
+  return (
+    <nav>
+      <div className="button-button-area">
+        <button onClick={() => handleButtonClick("전체")}>전체</button>
+        {buttonInfo.map((item) => (
+          <button onClick={() => handleButtonClick(item.name)} key={item.id}>
+            {item.name}
+          </button>
+        ))}
+      </div>
+      <div className="button-text-area">
+        <p>{selectedButton}</p>
+        <div className="tool-box">
+          <a href="#">
+            <img src={share} alt="share" />
+            공유
+          </a>
+          <a href="#">
+            <img src={pen} alt="pen" />
+            이름 변경
+          </a>
+          <a href="#">
+            <img src={remove} alt="delete" />
+            삭제
+          </a>
+        </div>
+      </div>
+    </nav>
+  );
+}
 
 function UserSection() {
   const [cardInfo, setCardInfo] = useState();
@@ -17,7 +72,7 @@ function UserSection() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`${CODEIT_API}/users/1/links?folderId=14`);
+      const response = await fetch(`${CODEIT_API}/users/1/links`);
       const data = await response.json();
       setCardInfo(data["data"]);
     };
@@ -36,6 +91,7 @@ function UserSection() {
 
   return (
     <section>
+      <CreateButton />
       <div className="div-card">
         {cardInfo.map((cardData, index) => (
           <a

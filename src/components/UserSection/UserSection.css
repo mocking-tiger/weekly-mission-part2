@@ -1,3 +1,9 @@
+nav {
+  max-width: 1140px;
+  padding: 0 32px;
+  margin: 0 auto;
+}
+
 section {
   padding: 40px 0;
 }
@@ -8,6 +14,53 @@ section {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+}
+
+.button-button-area {
+  display: flex;
+  gap: 5px;
+  margin: 0 auto;
+}
+
+.button-button-area button {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
+  background: #fff;
+}
+
+.button-text-area {
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.button-text-area p {
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.button-text-area img {
+  width: 18px;
+  height: 18px;
+}
+
+.tool-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tool-box a {
+  display: flex;
+  align-items: center;
+  color: var(--Linkbrary-gray60, #9fa6b2);
+  font-family: Pretendard;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 @media (max-width: 1123px) {
