@@ -8,6 +8,7 @@ import logo from "../../assets/logo.svg";
 import pen from "../../assets/pen.svg";
 import share from "../../assets/share.svg";
 import remove from "../../assets/delete.svg";
+import { useNavigate } from "react-router-dom";
 
 function UserSection() {
   const [cardInfo, setCardInfo] = useState([]);
@@ -20,21 +21,31 @@ function UserSection() {
     width: "133px",
     height: "24px",
   };
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
-      const responseFolders = await fetch(`${CODEIT_API}/users/1/folders`);
-      const folderData = await responseFolders.json();
+      try {
+        const responseFolders = await fetch(`${CODEIT_API}/users/1/folders`);
+        const folderData = await responseFolders.json();
 
-      const responseLinks = await fetch(`${CODEIT_API}/users/1/links`);
-      const linkData = await responseLinks.json();
+        if (folderData["data"].length === 0) {
+          navigate("/folderEmpty");
+          return;
+        }
 
-      setButtonInfo(folderData["data"]);
-      setCardInfo(linkData["data"]);
-      setFilteredData(linkData["data"]);
+        const responseLinks = await fetch(`${CODEIT_API}/users/1/links`);
+        const linkData = await responseLinks.json();
+
+        setButtonInfo(folderData["data"]);
+        setCardInfo(linkData["data"]);
+        setFilteredData(linkData["data"]);
+      } catch (error) {
+        console.error("데이터를 불러오는 중 오류 발생:", error);
+      }
     };
     fetchData();
-  }, []);
+  }, [navigate]);
 
   if (!buttonInfo && !cardInfo) {
     return null;
