@@ -25,8 +25,15 @@ section {
 .button-button-area button {
   padding: 8px 12px;
   border-radius: 5px;
-  border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
+  border: 1px solid #6d6afe;
   background: #fff;
+  cursor: pointer;
+}
+
+.button-button-area button.selected {
+  color: #fff;
+  border: 1px solid #6d6afe;
+  background: #6d6afe;
 }
 
 .button-text-area {
@@ -50,6 +57,10 @@ section {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+
+.tool-box.hidden {
+  display: none;
 }
 
 .tool-box a {

@@ -1,6 +1,6 @@
 import "./UserSection.css";
 import Card from "../Card/Card";
-import { useEffect, useState } from "react";
+import { Children, useEffect, useState } from "react";
 import timeDiffChecker from "../../utils/TimeDiffChecker/TimeDiffChecker";
 import { todayIs } from "../../utils/TodayIs/TodayIs";
 import { CODEIT_API } from "../../assets/url";
@@ -33,16 +33,27 @@ function CreateButton() {
   return (
     <nav>
       <div className="button-button-area">
-        <button onClick={() => handleButtonClick("전체")}>전체</button>
+        <button
+          onClick={() => handleButtonClick("전체")}
+          className={`${selectedButton === "전체" ? "selected" : ""}`}
+        >
+          전체
+        </button>
         {buttonInfo.map((item) => (
-          <button onClick={() => handleButtonClick(item.name)} key={item.id}>
+          <button
+            onClick={() => handleButtonClick(item.name)}
+            key={item.id}
+            className={item.name === selectedButton ? "selected" : ""}
+          >
             {item.name}
           </button>
         ))}
       </div>
       <div className="button-text-area">
         <p>{selectedButton}</p>
-        <div className="tool-box">
+        <div
+          className={`tool-box ${selectedButton === "전체" ? "hidden" : ""}`}
+        >
           <a href="#">
             <img src={share} alt="share" />
             공유
