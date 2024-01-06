@@ -55,3 +55,21 @@
   line-height: normal;
   cursor: pointer;
 }
+
+@media (max-width: 1123px) {
+}
+
+@media (max-width: 779px) {
+  .addlink-input {
+    width: 50%;
+  }
+
+  .addlink-container {
+    padding: 24px 32px 40px;
+    margin-bottom: 20px;
+  }
+
+  .addlink-inputbox {
+    padding: 8px 10px;
+  }
+}

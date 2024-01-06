@@ -2,10 +2,7 @@ nav {
   max-width: 1140px;
   padding: 0 32px;
   margin: 0 auto;
-}
-
-section {
-  padding: 40px 0;
+  position: relative;
 }
 
 .div-card {
@@ -20,6 +17,7 @@ section {
   display: flex;
   gap: 5px;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 .button-button-area button {
@@ -34,6 +32,12 @@ section {
   color: #fff;
   border: 1px solid #6d6afe;
   background: #6d6afe;
+}
+
+.add-button {
+  position: absolute;
+  right: 40px;
+  top: 8px;
 }
 
 .button-text-area {
@@ -83,12 +87,21 @@ section {
   }
 }
 
-@media (max-width: 779px) {
+@media (max-width: 768px) {
   section {
     padding: 20px 0;
   }
 
   .div-card {
     grid-template-columns: 1fr;
+  }
+
+  .button-text-area {
+    display: grid;
+    gap: 12px;
+  }
+
+  .add-button {
+    display: none;
   }
 }
