@@ -1,11 +1,12 @@
-import "./Section.css";
+import "./UserSection.css";
 import Card from "../Card/Card";
 import { useEffect, useState } from "react";
 import timeDiffChecker from "../../utils/TimeDiffChecker/TimeDiffChecker";
 import { todayIs } from "../../utils/TodayIs/TodayIs";
-import { SAMPLE_FOLDER } from "../../assets/url";
+import { CODEIT_API } from "../../assets/url";
+import logo from "../../assets/logo.svg";
 
-function Section() {
+function UserSection() {
   const [cardInfo, setCardInfo] = useState();
   const style = {};
   const logoStyle = {
@@ -16,9 +17,9 @@ function Section() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(SAMPLE_FOLDER);
+      const response = await fetch(`${CODEIT_API}/users/1/links?folderId=14`);
       const data = await response.json();
-      setCardInfo(data["folder"]["links"]);
+      setCardInfo(data["data"]);
     };
     fetchData();
   }, []);
@@ -29,7 +30,7 @@ function Section() {
 
   const timeDiffs = cardInfo.map((item) => {
     const today = new Date();
-    const linkedDay = new Date(item.createdAt);
+    const linkedDay = new Date(item.created_at);
     return Math.floor((today - linkedDay) / 1000);
   });
 
@@ -44,8 +45,10 @@ function Section() {
             key={cardData.id}
           >
             <Card
-              style={cardData.imageSource !== undefined ? style : logoStyle}
-              image={cardData.imageSource}
+              style={cardData.image_source !== null ? style : logoStyle}
+              image={
+                cardData.image_source !== null ? cardData.image_source : logo
+              }
               createdAt={timeDiffChecker(timeDiffs[index])}
               description={cardData.description}
               uploadDate={todayIs()}
@@ -57,4 +60,4 @@ function Section() {
   );
 }
 
-export default Section;
+export default UserSection;

@@ -5,11 +5,10 @@ import logoImg from "../../assets/logo.svg";
 import styled from "styled-components";
 
 const STYLED_HEADER = styled.header`
-  ${(props) => props.isStatic && "position: static;"}
-  ${(props) => !props.isStatic && "position: fixed;"}
+  position: ${(props) => (props.$notFixed ? "static" : "fixed")};
 `;
 
-function Header({ url = CODEIT_API, isStatic }) {
+function Header({ notFixed }) {
   const [userInfo, setUserInfo] = useState(); //로그인정보 유무로 각각 로그인버튼/프로필정보 출력
   const invisible = { display: "none" };
   const visible = { display: "inherit" };
@@ -22,7 +21,7 @@ function Header({ url = CODEIT_API, isStatic }) {
     };
 
     fetchData();
-  }, [url]);
+  }, []);
 
   if (!userInfo) {
     //api에서 데이터 미수신시 렌더링 방지
@@ -30,7 +29,7 @@ function Header({ url = CODEIT_API, isStatic }) {
   }
 
   return (
-    <STYLED_HEADER isStatic={isStatic}>
+    <STYLED_HEADER $notFixed={notFixed}>
       <div className="header-son">
         <a href="/">
           <img src={logoImg} alt="로고" />

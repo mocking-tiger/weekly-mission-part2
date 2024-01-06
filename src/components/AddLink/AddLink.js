@@ -12,6 +12,7 @@ function AddLink() {
               <input
                 className="addlink-input"
                 placeholder="링크를 추가해 보세요"
+                id="add-link"
               />
               <button className="addlink-button">추가하기</button>
             </div>
