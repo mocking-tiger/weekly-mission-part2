@@ -7,7 +7,7 @@ import { CODEIT_API } from "../assets/url";
 function Folder() {
   return (
     <>
-      <Header url={`${CODEIT_API}/users/1`} />
+      <Header url={`${CODEIT_API}/users/1`} isStatic />
       <AddLink />
       <br />
       <br />
