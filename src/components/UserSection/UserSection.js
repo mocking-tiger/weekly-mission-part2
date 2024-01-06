@@ -8,6 +8,7 @@ import logo from "../../assets/logo.svg";
 import pen from "../../assets/pen.svg";
 import share from "../../assets/share.svg";
 import remove from "../../assets/delete.svg";
+import add from "../../assets/add.svg";
 import { useNavigate } from "react-router-dom";
 
 function UserSection() {
@@ -96,6 +97,7 @@ function UserSection() {
             </button>
           ))}
         </div>
+        <img src={add} alt="add" className="add-button" />
         <div className="button-text-area">
           <p>{selectedButton}</p>
           <div

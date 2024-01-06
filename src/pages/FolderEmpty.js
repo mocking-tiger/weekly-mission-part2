@@ -12,7 +12,7 @@ const STYLED_DIV = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  width: 1060px;
+  max-width: 1060px;
   height: 100px;
   margin: 0 auto;
   padding: 41px 0 35px;

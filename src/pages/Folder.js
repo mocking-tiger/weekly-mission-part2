@@ -4,6 +4,7 @@ import AddLink from "../components/AddLink/AddLink";
 import Search from "../components/Search/Search";
 import UserSection from "../components/UserSection/UserSection";
 import Footer from "../components/Footer/Footer";
+import FloatingActionButton from "../components/FloatingActionButton/FloatingActionButton";
 
 function Folder() {
   return (
@@ -12,6 +13,7 @@ function Folder() {
       <AddLink />
       <Search />
       <UserSection />
+      <FloatingActionButton />
       <Footer />
     </>
   );
