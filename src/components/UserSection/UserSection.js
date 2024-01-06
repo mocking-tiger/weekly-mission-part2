@@ -1,6 +1,6 @@
 import "./UserSection.css";
 import Card from "../Card/Card";
-import { Children, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import timeDiffChecker from "../../utils/TimeDiffChecker/TimeDiffChecker";
 import { todayIs } from "../../utils/TodayIs/TodayIs";
 import { CODEIT_API } from "../../assets/url";
@@ -54,15 +54,15 @@ function CreateButton() {
         <div
           className={`tool-box ${selectedButton === "전체" ? "hidden" : ""}`}
         >
-          <a href="#">
+          <a href="#!">
             <img src={share} alt="share" />
             공유
           </a>
-          <a href="#">
+          <a href="#!">
             <img src={pen} alt="pen" />
             이름 변경
           </a>
-          <a href="#">
+          <a href="#!">
             <img src={remove} alt="delete" />
             삭제
           </a>
