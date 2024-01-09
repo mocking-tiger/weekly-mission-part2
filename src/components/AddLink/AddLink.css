@@ -11,17 +11,14 @@
   border-radius: 15px;
   border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
   background: var(--Linkbrary-white, #fff);
-}
-
-.addlink-inputbox label {
   position: relative;
 }
 
-.addlink-inputbox label img {
+.addlink-inputbox img {
   position: absolute;
   width: 20px;
   height: 20px;
-  top: 20%;
+  top: 35%;
 }
 
 .addlink-inputbox div {
@@ -71,5 +68,10 @@
 
   .addlink-inputbox {
     padding: 8px 10px;
+  }
+
+  .addlink-inputbox img {
+    top: 28%;
+    left: 15px;
   }
 }
