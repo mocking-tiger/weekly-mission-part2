@@ -4,7 +4,7 @@ import "./Header.css";
 import logoImg from "../../assets/logo.svg";
 import styled from "styled-components";
 
-const STYLED_HEADER = styled.header`
+const StyledHeader = styled.header`
   position: ${(props) => (props.$notFixed ? "static" : "fixed")};
 `;
 
@@ -29,7 +29,7 @@ function Header({ notFixed }) {
   }
 
   return (
-    <STYLED_HEADER $notFixed={notFixed}>
+    <StyledHeader $notFixed={notFixed}>
       <div className="header-son">
         <a href="/">
           <img src={logoImg} alt="로고" />
@@ -49,7 +49,7 @@ function Header({ notFixed }) {
           <h6>{userInfo["data"][0]["email"]}</h6>
         </div>
       </div>
-    </STYLED_HEADER>
+    </StyledHeader>
   );
 }
 

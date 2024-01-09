@@ -17,14 +17,18 @@ const FloatingActionButton = ({ onClick }) => {
     };
   }, []);
 
-  return showFab ? (
+  if (!showFab) {
+    return null;
+  }
+
+  return (
     <>
       <button className="fab" onClick={onClick}>
         폴더 추가
       </button>
       <img src={add} className="floating-add-button" alt="add" />
     </>
-  ) : null;
+  );
 };
 
 export default FloatingActionButton;
