@@ -20,13 +20,17 @@ function Card({
   style,
 }) {
   const [isHover, setIsHover] = useState(false);
+  const [showPopover, setShowPopover] = useState(false);
   const mouseOver = () => {
     setIsHover(true);
   };
   const mouseOut = () => {
     setIsHover(false);
   };
-
+  function test(e) {
+    e.preventDefault();
+    setShowPopover(!showPopover);
+  }
   return (
     <article className="card">
       <figure className="image-box">
@@ -42,7 +46,13 @@ function Card({
       </figure>
       <div className="text-box">
         <h5>{createdAt}</h5>
-        <img src={kebab} alt="kebab" />
+        <img src={kebab} alt="kebab" className="kebab" onClick={test} />
+        {showPopover && (
+          <div className="popover">
+            <div>삭제하기</div>
+            <div>폴더에 추가</div>
+          </div>
+        )}
         <p>{description}</p>
         <h6>{uploadDate}</h6>
       </div>
