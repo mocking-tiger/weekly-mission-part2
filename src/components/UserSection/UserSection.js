@@ -135,6 +135,7 @@ function UserSection() {
                 createdAt={timeDiffChecker(timeDiffs[index])}
                 description={cardData.description}
                 uploadDate={todayIs()}
+                link={cardData.url}
               />
             </a>
           ))}
