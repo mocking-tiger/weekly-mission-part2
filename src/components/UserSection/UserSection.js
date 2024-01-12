@@ -9,44 +9,39 @@ import pen from "../../assets/pen.svg";
 import share from "../../assets/share.svg";
 import remove from "../../assets/delete.svg";
 import add from "../../assets/add.svg";
-import { useNavigate } from "react-router-dom";
+import ModalDeletefolder from "../Modal/ModalDeleteFolder";
+import ModalEditFolderName from "../Modal/ModalEditFolderName";
+import ModalSharedFolder from "../Modal/ModalSharedFolder";
+import ModalAddFolder from "../Modal/ModalAddFolder";
 
-function UserSection() {
+function UserSection(buttonInfo) {
   const [cardInfo, setCardInfo] = useState([]);
-  const [buttonInfo, setButtonInfo] = useState([]);
   const [selectedButton, setSelectedButton] = useState("전체");
   const [filterdData, setFilteredData] = useState([]);
+  const [showModalDeleteFolder, setShowModalDeleteFolder] = useState(false);
+  const [showModalEditFolderName, setShowModalEditFolderName] = useState(false);
+  const [showModalSharedFolder, setShowModalSharedFolder] = useState(false);
+  const [showModalAddFolder, setShowModalAddFolder] = useState(false);
+  const [folderName, setFolderName] = useState("");
+  const [folderId, setFolderId] = useState("");
+
   const style = {};
   const logoStyle = {
     opacity: "0.2",
     width: "133px",
     height: "24px",
   };
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const responseFolders = await fetch(`${CODEIT_API}/users/1/folders`);
-        const folderData = await responseFolders.json();
+      const responseLinks = await fetch(`${CODEIT_API}/users/1/links`);
+      const linkData = await responseLinks.json();
 
-        if (folderData["data"].length === 0) {
-          navigate("/folderEmpty");
-          return;
-        }
-
-        const responseLinks = await fetch(`${CODEIT_API}/users/1/links`);
-        const linkData = await responseLinks.json();
-
-        setButtonInfo(folderData["data"]);
-        setCardInfo(linkData["data"]);
-        setFilteredData(linkData["data"]);
-      } catch (error) {
-        console.error("데이터를 불러오는 중 오류 발생:", error);
-      }
+      setCardInfo(linkData["data"]);
+      setFilteredData(linkData["data"]);
     };
     fetchData();
-  }, [navigate]);
+  }, []);
 
   if (!buttonInfo && !cardInfo) {
     return null;
@@ -65,6 +60,30 @@ function UserSection() {
     }
   };
 
+  const handleDeleteFolder = () => {
+    setShowModalDeleteFolder(!showModalDeleteFolder);
+  };
+
+  const handleEditFolderName = () => {
+    setShowModalEditFolderName(!showModalEditFolderName);
+  };
+
+  const handleSharedFolder = () => {
+    setShowModalSharedFolder(!showModalSharedFolder);
+  };
+
+  const handleAddFolder = () => {
+    setShowModalAddFolder(!showModalAddFolder);
+  };
+
+  const handleFolderInfo = (name, id) => {
+    setFolderName(name);
+    setFolderId(id);
+  };
+
+  function tempActivate(e) {
+    alert("아직 미구현");
+  }
   const timeDiffs = cardInfo.map((item) => {
     const today = new Date();
     const linkedDay = new Date(item.created_at);
@@ -84,11 +103,13 @@ function UserSection() {
           >
             전체
           </button>
-          {buttonInfo.map((item) => (
+          {buttonInfo.buttonInfo.map((item) => (
             <button
-              onClick={() => {
+              onClick={(e) => {
                 handleButtonClick(item.name);
                 handleFilter(item.id);
+                handleFolderInfo(e.target.innerHTML, item.id);
+                console.log(e);
               }}
               key={item.id}
               className={item.name === selectedButton ? "selected" : ""}
@@ -97,24 +118,29 @@ function UserSection() {
             </button>
           ))}
         </div>
-        <img src={add} alt="add" className="add-button" />
+        <img
+          src={add}
+          alt="add"
+          className="add-button"
+          onClick={handleAddFolder}
+        />
         <div className="button-text-area">
           <p>{selectedButton}</p>
           <div
             className={`tool-box ${selectedButton === "전체" ? "hidden" : ""}`}
           >
-            <a href="#!">
+            <div onClick={handleSharedFolder}>
               <img src={share} alt="share" />
               공유
-            </a>
-            <a href="#!">
+            </div>
+            <div onClick={handleEditFolderName}>
               <img src={pen} alt="pen" />
               이름 변경
-            </a>
-            <a href="#!">
+            </div>
+            <div onClick={handleDeleteFolder}>
               <img src={remove} alt="delete" />
               삭제
-            </a>
+            </div>
           </div>
         </div>
       </nav>
@@ -135,11 +161,44 @@ function UserSection() {
                 createdAt={timeDiffChecker(timeDiffs[index])}
                 description={cardData.description}
                 uploadDate={todayIs()}
+                link={cardData.url}
+                buttonInfo={buttonInfo}
               />
             </a>
           ))}
         </div>
       </section>
+      {showModalDeleteFolder && (
+        <ModalDeletefolder
+          name={selectedButton}
+          handleClose={handleDeleteFolder}
+          handleButton={tempActivate}
+        />
+      )}
+      {showModalEditFolderName && (
+        <ModalEditFolderName
+          name={selectedButton}
+          handleClose={handleEditFolderName}
+          handleButton={tempActivate}
+        />
+      )}
+      {showModalSharedFolder && (
+        <ModalSharedFolder
+          name={selectedButton}
+          handleClose={handleSharedFolder}
+          buttonInfo={buttonInfo}
+          cardInfo={cardInfo}
+          folderName={folderName}
+          folderId={folderId}
+        />
+      )}
+      {showModalAddFolder && (
+        <ModalAddFolder
+          name={selectedButton}
+          handleClose={handleAddFolder}
+          handleButton={tempActivate}
+        />
+      )}
     </>
   );
 }

@@ -38,6 +38,7 @@ nav {
   position: absolute;
   right: 40px;
   top: 8px;
+  cursor: pointer;
 }
 
 .button-text-area {
@@ -67,7 +68,7 @@ nav {
   display: none;
 }
 
-.tool-box a {
+.tool-box div {
   display: flex;
   align-items: center;
   color: var(--Linkbrary-gray60, #9fa6b2);
@@ -76,6 +77,7 @@ nav {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  cursor: pointer;
 }
 
 @media (max-width: 1123px) {
