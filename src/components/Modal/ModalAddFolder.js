@@ -22,10 +22,10 @@ const ModalContainer = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 15px;
 
     div {
-      gap: 8px;
+      gap: 24px;
       padding: 0;
 
       h1 {
@@ -33,9 +33,15 @@ const ModalContainer = styled.div`
         font-size: 1.25rem;
       }
 
-      p {
-        color: #9fa6b2;
-        font-size: 0.875rem;
+      input {
+        width: 280px;
+        padding: 18px 15px;
+        border-radius: 8px;
+        border: 1px solid lightgray;
+        background: #fff;
+      }
+      input:focus {
+        outline: 1px solid #6d6afe;
       }
 
       img {
@@ -50,7 +56,7 @@ const ModalContainer = styled.div`
       width: 280px;
       padding: 16px 20px;
       border-radius: 8px;
-      background: #ff5b56;
+      background: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
       border: 0px;
       cursor: pointer;
 
@@ -63,19 +69,19 @@ const ModalContainer = styled.div`
   }
 `;
 
-const ModalDeleteLink = ({ handleClose, handleDelete, link }) => {
+const ModalAddFolder = ({ handleClose, handleButton }) => {
   return (
-    <ModalContainer onClick={(e) => e.preventDefault()}>
+    <ModalContainer>
       <div>
         <div>
-          <h1>링크 삭제</h1>
-          <p>{link}</p>
+          <h1>폴더 추가</h1>
+          <input placeholder="내용 입력" />
           <img onClick={handleClose} src={close} alt="close" />
         </div>
-        <button onClick={handleDelete}>삭제하기</button>
+        <button onClick={handleButton}>추가하기</button>
       </div>
     </ModalContainer>
   );
 };
 
-export default ModalDeleteLink;
+export default ModalAddFolder;

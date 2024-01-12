@@ -5,6 +5,7 @@ import star from "../../assets/star.svg";
 import kebab from "../../assets/kebab.svg";
 import classNames from "classnames";
 import ModalDeleteLink from "../Modal/ModalDeleteLink";
+import ModalAddLink from "../Modal/ModalAddLink";
 
 const DEFAULT_CARD_VALUE = {
   createdAt: "10minutes ago",
@@ -20,10 +21,12 @@ function Card({
   uploadDate = DEFAULT_CARD_VALUE.uploadDate,
   style,
   link,
+  buttonInfo,
 }) {
   const [isHover, setIsHover] = useState(false);
   const [showPopover, setShowPopover] = useState(false);
   const [showModalDeleteLink, setShowModalDeleteLink] = useState(false);
+  const [showAddLink, setShowAddLink] = useState(false);
 
   const mouseOver = () => {
     setIsHover(true);
@@ -37,20 +40,19 @@ function Card({
     setShowPopover(!showPopover);
   }
 
-  function openModalDeleteLink(e) {
-    e.preventDefault();
-    setShowModalDeleteLink(true);
-  }
-  function closeModalDeleteLink(e) {
-    e.preventDefault();
-    if (e.target["alt"] === "close") {
-      setShowModalDeleteLink(false);
-    }
-  }
   function handleDeleteLink(e) {
     e.preventDefault();
-    alert("링크가 지워졌습니다.(테스트기능)");
+    setShowModalDeleteLink(!showModalDeleteLink);
   }
+  function handleAddLink(e) {
+    e.preventDefault();
+    setShowAddLink(!showAddLink);
+  }
+  function DeleteLink(e) {
+    e.preventDefault();
+    alert("아직 미구현");
+  }
+
   return (
     <article className="card">
       <figure className="image-box">
@@ -69,8 +71,8 @@ function Card({
         <img src={kebab} alt="kebab" className="kebab" onClick={popOver} />
         {showPopover && (
           <div className="popover">
-            <div onClick={openModalDeleteLink}>삭제하기</div>
-            <div>폴더에 추가</div>
+            <div onClick={handleDeleteLink}>삭제하기</div>
+            <div onClick={handleAddLink}>폴더에 추가</div>
           </div>
         )}
         <p>{description}</p>
@@ -79,9 +81,17 @@ function Card({
 
       {showModalDeleteLink && (
         <ModalDeleteLink
-          handleClose={closeModalDeleteLink}
-          handleDelete={handleDeleteLink}
+          handleClose={handleDeleteLink}
+          handleDelete={DeleteLink}
           link={link}
+        />
+      )}
+      {showAddLink && (
+        <ModalAddLink
+          handleClose={handleAddLink}
+          handleButton={DeleteLink}
+          link={link}
+          buttonInfo={buttonInfo.buttonInfo}
         />
       )}
     </article>
