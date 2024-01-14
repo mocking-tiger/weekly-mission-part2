@@ -1,30 +1,27 @@
 import { useState, useEffect } from "react";
-import { CODEIT_API } from "../../assets/url";
 import "./Header.css";
 import logoImg from "../../assets/logo.svg";
 import styled from "styled-components";
+import FetchUserData from "../../utils/Fetch/FetchUserData";
 
 const StyledHeader = styled.header`
   position: ${(props) => (props.$notFixed ? "static" : "fixed")};
 `;
 
 function Header({ notFixed }) {
-  const [userInfo, setUserInfo] = useState(); //로그인정보 유무로 각각 로그인버튼/프로필정보 출력
+  const [userInfo, setUserInfo] = useState();
   const invisible = { display: "none" };
   const visible = { display: "inherit" };
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`${CODEIT_API}/users/1`);
-      const data = await response.json();
-      setUserInfo(data);
+      const userData = await FetchUserData();
+      setUserInfo(userData);
     };
-
     fetchData();
   }, []);
 
   if (!userInfo) {
-    //api에서 데이터 미수신시 렌더링 방지
     return null;
   }
 

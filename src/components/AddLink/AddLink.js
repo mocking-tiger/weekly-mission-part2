@@ -1,11 +1,25 @@
 import "./AddLink.css";
 import link from "../../assets/link.svg";
 import ModalAddLink from "../Modal/ModalAddLink";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import FetchFolderData from "../../utils/Fetch/FetchFolderData";
 
-function AddLink({ buttonInfo }) {
+function AddLink() {
   const [showAddLink, setShowAddLink] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [buttonInfo, setButtonInfo] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const folderData = await FetchFolderData();
+      setButtonInfo(folderData["data"]);
+    };
+    fetchData();
+  }, []);
+
+  if (!buttonInfo) {
+    return null;
+  }
 
   function handleAddLink(e) {
     e.preventDefault();
