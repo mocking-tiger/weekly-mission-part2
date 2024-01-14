@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
-import Main from "./Main";
+import App from "./App";
 import "./font.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Main />);
+root.render(<App />);
