@@ -1,9 +1,8 @@
 import "./UserSection.css";
 import Card from "../Card/Card";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import timeDiffChecker from "../../utils/TimeDiffChecker/TimeDiffChecker";
 import { todayIs } from "../../utils/TodayIs/TodayIs";
-import { CODEIT_API } from "../../assets/url";
 import logo from "../../assets/logo.svg";
 import pen from "../../assets/pen.svg";
 import share from "../../assets/share.svg";
@@ -13,8 +12,12 @@ import ModalDeletefolder from "../Modal/ModalDeleteFolder";
 import ModalEditFolderName from "../Modal/ModalEditFolderName";
 import ModalSharedFolder from "../Modal/ModalSharedFolder";
 import ModalAddFolder from "../Modal/ModalAddFolder";
+import FetchLinkData from "../../utils/Fetch/FetchLinkData";
+import FetchFolderData from "../../utils/Fetch/FetchFolderData";
+import { useNavigate } from "react-router-dom";
 
-function UserSection(buttonInfo) {
+function UserSection() {
+  const [buttonInfo, setButtonInfo] = useState([]);
   const [cardInfo, setCardInfo] = useState([]);
   const [selectedButton, setSelectedButton] = useState("전체");
   const [filterdData, setFilteredData] = useState([]);
@@ -24,6 +27,7 @@ function UserSection(buttonInfo) {
   const [showModalAddFolder, setShowModalAddFolder] = useState(false);
   const [folderName, setFolderName] = useState("");
   const [folderId, setFolderId] = useState("");
+  const navigate = useNavigate();
 
   const style = {};
   const logoStyle = {
@@ -34,14 +38,18 @@ function UserSection(buttonInfo) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const responseLinks = await fetch(`${CODEIT_API}/users/1/links`);
-      const linkData = await responseLinks.json();
-
+      const linkData = await FetchLinkData();
+      const folderData = await FetchFolderData();
+      if (folderData["data"].length === 0) {
+        navigate("/folderEmpty");
+        return;
+      }
+      setButtonInfo(folderData["data"]);
       setCardInfo(linkData["data"]);
       setFilteredData(linkData["data"]);
     };
     fetchData();
-  }, []);
+  }, [navigate]);
 
   if (!buttonInfo && !cardInfo) {
     return null;
@@ -103,13 +111,12 @@ function UserSection(buttonInfo) {
           >
             전체
           </button>
-          {buttonInfo.buttonInfo.map((item) => (
+          {buttonInfo.map((item) => (
             <button
               onClick={(e) => {
                 handleButtonClick(item.name);
                 handleFilter(item.id);
                 handleFolderInfo(e.target.innerHTML, item.id);
-                console.log(e);
               }}
               key={item.id}
               className={item.name === selectedButton ? "selected" : ""}

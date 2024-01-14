@@ -75,7 +75,7 @@ const ModalSharedFolder = ({
   folderName,
   folderId,
 }) => {
-  const SHARING_URL = `https://weekly-mission-part2.vercel.app/shared?user=${buttonInfo.buttonInfo[0]["user_id"]}&folder=${folderId}`;
+  const SHARING_URL = `https://weekly-mission-part2.vercel.app/shared?user=${buttonInfo[0]["user_id"]}&folder=${folderId}`;
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://developers.kakao.com/sdk/js/kakao.js";

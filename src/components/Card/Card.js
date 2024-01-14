@@ -91,7 +91,7 @@ function Card({
           handleClose={handleAddLink}
           handleButton={DeleteLink}
           link={link}
-          buttonInfo={buttonInfo.buttonInfo}
+          buttonInfo={buttonInfo}
         />
       )}
     </article>

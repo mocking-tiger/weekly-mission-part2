@@ -18,6 +18,7 @@ const ModalContainer = styled.div`
 
   div {
     width: 360px;
+    max-height: 500px;
     background: white;
     padding: 32px 40px;
     border-radius: 15px;
@@ -57,6 +58,8 @@ const ModalContainer = styled.div`
       padding: 0;
       gap: 4px;
       width: 100%;
+      overflow: scroll;
+      overflow-x: hidden;
 
       div {
         padding: 8px;
@@ -137,19 +140,21 @@ const ModalAddLink = ({ handleClose, handleButton, link, buttonInfo }) => {
         </div>
 
         <div className="addlink-folder">
-          {buttonInfo.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => handleFolderSelected(item.id)}
-              className={
-                selectedFolders.includes(item.id) ? "selected" : undefined
-              }
-            >
-              <h2>{item.name}</h2>
-              <h3>{item.link.count}개 링크</h3>
-              <img src={check} alt="check" />
-            </div>
-          ))}
+          {buttonInfo
+            ? buttonInfo.map((item) => (
+                <div
+                  key={item.id}
+                  onClick={() => handleFolderSelected(item.id)}
+                  className={
+                    selectedFolders.includes(item.id) ? "selected" : undefined
+                  }
+                >
+                  <h2>{item.name}</h2>
+                  <h3>{item.link.count}개 링크</h3>
+                  <img src={check} alt="check" />
+                </div>
+              ))
+            : alert("폴더정보는 8주차 과제(folder페이지)부터 제공됩니다.")}
         </div>
 
         <button onClick={handleButton}>추가하기</button>
