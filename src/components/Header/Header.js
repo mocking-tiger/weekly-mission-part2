@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./Header.css";
 import logoImg from "../../assets/logo.svg";
 import styled from "styled-components";
-import FetchUserData from "../../utils/Fetch/FetchUserData";
+import { FetchUserData } from "../../utils/Fetch/UsersAPI";
 
 const StyledHeader = styled.header`
   position: ${(props) => (props.$notFixed ? "static" : "fixed")};

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import close from "../../assets/_close.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import check from "../../assets/check.svg";
 
 const ModalContainer = styled.div`
@@ -129,6 +129,11 @@ const ModalAddLink = ({ handleClose, handleButton, link, buttonInfo }) => {
       setSelectedFolders([...selectedFolders, folderId]);
     }
   };
+  useEffect(() => {
+    if (!buttonInfo) {
+      alert("폴더정보는 8주차 과제(folder페이지)부터 제공됩니다.");
+    }
+  }, [buttonInfo]);
 
   return (
     <ModalContainer onClick={(e) => e.preventDefault()}>
@@ -140,21 +145,20 @@ const ModalAddLink = ({ handleClose, handleButton, link, buttonInfo }) => {
         </div>
 
         <div className="addlink-folder">
-          {buttonInfo
-            ? buttonInfo.map((item) => (
-                <div
-                  key={item.id}
-                  onClick={() => handleFolderSelected(item.id)}
-                  className={
-                    selectedFolders.includes(item.id) ? "selected" : undefined
-                  }
-                >
-                  <h2>{item.name}</h2>
-                  <h3>{item.link.count}개 링크</h3>
-                  <img src={check} alt="check" />
-                </div>
-              ))
-            : alert("폴더정보는 8주차 과제(folder페이지)부터 제공됩니다.")}
+          {buttonInfo &&
+            buttonInfo.map((item) => (
+              <div
+                key={item.id}
+                onClick={() => handleFolderSelected(item.id)}
+                className={
+                  selectedFolders.includes(item.id) ? "selected" : undefined
+                }
+              >
+                <h2>{item.name}</h2>
+                <h3>{item.link.count}개 링크</h3>
+                <img src={check} alt="check" />
+              </div>
+            ))}
         </div>
 
         <button onClick={handleButton}>추가하기</button>
