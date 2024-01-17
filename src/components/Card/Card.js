@@ -24,9 +24,9 @@ function Card({
   buttonInfo,
 }) {
   const [isHover, setIsHover] = useState(false);
-  const [showPopover, setShowPopover] = useState(false);
-  const [showModalDeleteLink, setShowModalDeleteLink] = useState(false);
-  const [showAddLink, setShowAddLink] = useState(false);
+  const [isShowPopover, setIsShowPopover] = useState(false);
+  const [isShowModalDeleteLink, setIsShowModalDeleteLink] = useState(false);
+  const [isShowAddLink, setIsShowAddLink] = useState(false);
 
   const mouseOver = () => {
     setIsHover(true);
@@ -37,16 +37,16 @@ function Card({
 
   function popOver(e) {
     e.preventDefault();
-    setShowPopover(!showPopover);
+    setIsShowPopover(!isShowPopover);
   }
 
   function handleDeleteLink(e) {
     e.preventDefault();
-    setShowModalDeleteLink(!showModalDeleteLink);
+    setIsShowModalDeleteLink(!isShowModalDeleteLink);
   }
   function handleAddLink(e) {
     e.preventDefault();
-    setShowAddLink(!showAddLink);
+    setIsShowAddLink(!isShowAddLink);
   }
   function DeleteLink(e) {
     e.preventDefault();
@@ -69,7 +69,7 @@ function Card({
       <div className="text-box">
         <h5>{createdAt}</h5>
         <img src={kebab} alt="kebab" className="kebab" onClick={popOver} />
-        {showPopover && (
+        {isShowPopover && (
           <div className="popover">
             <div onClick={handleDeleteLink}>삭제하기</div>
             <div onClick={handleAddLink}>폴더에 추가</div>
@@ -79,14 +79,14 @@ function Card({
         <h6>{uploadDate}</h6>
       </div>
 
-      {showModalDeleteLink && (
+      {isShowModalDeleteLink && (
         <ModalDeleteLink
           handleClose={handleDeleteLink}
           handleDelete={DeleteLink}
           link={link}
         />
       )}
-      {showAddLink && (
+      {isShowAddLink && (
         <ModalAddLink
           handleClose={handleAddLink}
           handleButton={DeleteLink}

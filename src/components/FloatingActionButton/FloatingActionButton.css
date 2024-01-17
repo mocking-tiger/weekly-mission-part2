@@ -24,8 +24,15 @@
   right: 0;
   margin: 0 auto;
   filter: brightness(300%);
+  cursor: pointer;
 }
 
 .fab:hover {
   background-color: #0056b3;
+}
+
+@media (min-width: 769px) {
+  .fab {
+    display: none;
+  }
 }

@@ -12,19 +12,20 @@ import ModalDeletefolder from "../Modal/ModalDeleteFolder";
 import ModalEditFolderName from "../Modal/ModalEditFolderName";
 import ModalSharedFolder from "../Modal/ModalSharedFolder";
 import ModalAddFolder from "../Modal/ModalAddFolder";
-import FetchLinkData from "../../utils/Fetch/FetchLinkData";
-import FetchFolderData from "../../utils/Fetch/FetchFolderData";
+import { FetchLinkData, FetchFolderData } from "../../utils/Fetch/UsersAPI";
 import { useNavigate } from "react-router-dom";
+import emptyFolder from "../../assets/empty-folder.png";
 
 function UserSection() {
   const [buttonInfo, setButtonInfo] = useState([]);
   const [cardInfo, setCardInfo] = useState([]);
   const [selectedButton, setSelectedButton] = useState("전체");
   const [filterdData, setFilteredData] = useState([]);
-  const [showModalDeleteFolder, setShowModalDeleteFolder] = useState(false);
-  const [showModalEditFolderName, setShowModalEditFolderName] = useState(false);
-  const [showModalSharedFolder, setShowModalSharedFolder] = useState(false);
-  const [showModalAddFolder, setShowModalAddFolder] = useState(false);
+  const [isShowModalDeleteFolder, setIsShowModalDeleteFolder] = useState(false);
+  const [isShowModalEditFolderName, setIsShowModalEditFolderName] =
+    useState(false);
+  const [isShowModalSharedFolder, setIsShowModalSharedFolder] = useState(false);
+  const [isShowModalAddFolder, setIsShowModalAddFolder] = useState(false);
   const [folderName, setFolderName] = useState("");
   const [folderId, setFolderId] = useState("");
   const navigate = useNavigate();
@@ -69,19 +70,19 @@ function UserSection() {
   };
 
   const handleDeleteFolder = () => {
-    setShowModalDeleteFolder(!showModalDeleteFolder);
+    setIsShowModalDeleteFolder(!isShowModalDeleteFolder);
   };
 
   const handleEditFolderName = () => {
-    setShowModalEditFolderName(!showModalEditFolderName);
+    setIsShowModalEditFolderName(!isShowModalEditFolderName);
   };
 
   const handleSharedFolder = () => {
-    setShowModalSharedFolder(!showModalSharedFolder);
+    setIsShowModalSharedFolder(!isShowModalSharedFolder);
   };
 
   const handleAddFolder = () => {
-    setShowModalAddFolder(!showModalAddFolder);
+    setIsShowModalAddFolder(!isShowModalAddFolder);
   };
 
   const handleFolderInfo = (name, id) => {
@@ -173,23 +174,29 @@ function UserSection() {
               />
             </a>
           ))}
+          {filterdData.length === 0 && (
+            <div className="empty-folder">
+              <img src={emptyFolder} alt="empty" />
+              <p>이 폴더는 비어있습니다.</p>
+            </div>
+          )}
         </div>
       </section>
-      {showModalDeleteFolder && (
+      {isShowModalDeleteFolder && (
         <ModalDeletefolder
           name={selectedButton}
           handleClose={handleDeleteFolder}
           handleButton={tempActivate}
         />
       )}
-      {showModalEditFolderName && (
+      {isShowModalEditFolderName && (
         <ModalEditFolderName
           name={selectedButton}
           handleClose={handleEditFolderName}
           handleButton={tempActivate}
         />
       )}
-      {showModalSharedFolder && (
+      {isShowModalSharedFolder && (
         <ModalSharedFolder
           name={selectedButton}
           handleClose={handleSharedFolder}
@@ -199,7 +206,7 @@ function UserSection() {
           folderId={folderId}
         />
       )}
-      {showModalAddFolder && (
+      {isShowModalAddFolder && (
         <ModalAddFolder
           name={selectedButton}
           handleClose={handleAddFolder}

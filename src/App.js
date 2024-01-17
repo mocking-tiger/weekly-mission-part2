@@ -8,11 +8,11 @@ function Main() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
-          <Route index element={<HomePage />} />
+        <Route>
+          <Route path="/" element={<HomePage />} />
           <Route path="shared" element={<Shared />} />
           <Route path="folder" element={<Folder />} />
-          <Route path="folderEmpty" element={<FolderEmpty />} />
+          <Route path="folder-empty" element={<FolderEmpty />} />
         </Route>
       </Routes>
     </BrowserRouter>

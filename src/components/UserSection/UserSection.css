@@ -80,6 +80,15 @@ nav {
   cursor: pointer;
 }
 
+.empty-folder {
+  text-align: center;
+  margin: 0 auto;
+  img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
 @media (max-width: 1123px) {
   .div-card {
     padding: 0 32px 0;

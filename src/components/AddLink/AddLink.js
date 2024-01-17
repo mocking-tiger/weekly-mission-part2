@@ -2,10 +2,10 @@ import "./AddLink.css";
 import link from "../../assets/link.svg";
 import ModalAddLink from "../Modal/ModalAddLink";
 import { useState, useEffect } from "react";
-import FetchFolderData from "../../utils/Fetch/FetchFolderData";
+import { FetchFolderData } from "../../utils/Fetch/UsersAPI";
 
 function AddLink() {
-  const [showAddLink, setShowAddLink] = useState(false);
+  const [isShowAddLink, setIsShowAddLink] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [buttonInfo, setButtonInfo] = useState([]);
 
@@ -23,7 +23,7 @@ function AddLink() {
 
   function handleAddLink(e) {
     e.preventDefault();
-    setShowAddLink(!showAddLink);
+    setIsShowAddLink(!isShowAddLink);
   }
 
   function handleInputChange(e) {
@@ -51,7 +51,7 @@ function AddLink() {
           </button>
         </div>
       </div>
-      {showAddLink && (
+      {isShowAddLink && (
         <ModalAddLink
           handleClose={handleAddLink}
           buttonInfo={buttonInfo}
